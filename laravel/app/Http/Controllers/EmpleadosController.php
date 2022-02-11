@@ -10,12 +10,12 @@ class EmpleadosController extends Controller
 {
     function obtenerLista()
 	{
-		$empleado =  Empleado::all();
+		$empleados =  Empleado::all();
 
 
 		$response = new \stdClass();
 		$response->success=true;
-		$response->data=$empleado;
+		$response->data=$empleados;
 
 		return response()->json($response,200);
 	}
@@ -38,25 +38,26 @@ class EmpleadosController extends Controller
 
 		if($empleado)
 		{
-			$producto->codigo=$request->codigo;
-			$producto->nombre=$request->nombre;
-            $producto->descripcion=$request->descripcion;
-            $producto->status=$request->status;
-			$producto->save();
+            $empleado->nombre=$request->nombre;
+            $empleado->apellido_paterno=$request->apellido_paterno;
+            $empleado->apellido_materno=$request->apellido_materno;
+            $empleado->numero_documento_identidad=$request->numero_documento_identidad;
+            $empleado->pais=$request->pais;
+			$empleado->save();
 		}
 
 		$response = new \stdClass();
 		$response->success=true;
-		$response->data=$producto;
+		$response->data=$empleado;
 
 		return response()->json($response,200);
 	}
 
-	function patch(Request $request)
+	/*function patch(Request $request)
 	{
-		$producto =  Empleado::find($request->id);
+		$empleado =  Empleado::find($request->id);
 
-		if($producto)
+		if($empleado)
 		{
 
 			if(isset($request->codigo))
@@ -73,17 +74,17 @@ class EmpleadosController extends Controller
 		$response->data=$producto;
 
 		return response()->json($response,200);
-	}
+	}*/
 
 
 	function store(Request $request)
 	{
 		$empleado = new Empleado();
-		$empleado->nombre = $request->nombre;
-        $empleado->apellido_paterno = $request->apellido_paterno;
-        $empleado->apellido_materno = $request->apellido_materno;
-        $empleado->numero_documento_identidad = $request->numero_documento_identidad;
-        $empleado->pais = $request->pais;
+		$empleado->nombre=$request->nombre;
+        $empleado->apellido_paterno=$request->apellido_paterno;
+        $empleado->apellido_materno=$request->apellido_materno;
+        $empleado->numero_documento_identidad=$request->numero_documento_identidad;
+        $empleado->pais=$request->pais;
 		$empleado->save();
 
 		$response = new \stdClass();
@@ -100,11 +101,11 @@ class EmpleadosController extends Controller
 		$response_code=200;
 
 
-		$producto = Empleado::find($id);
+		$empleado = Empleado::find($id);
 
-		if($producto)
+		if($empleado)
 		{
-			$producto->delete();
+			$empleado->delete();
 			$response->success=true;
 			$response_code=200;
 		}

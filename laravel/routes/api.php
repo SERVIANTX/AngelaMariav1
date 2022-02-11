@@ -17,6 +17,6 @@ use App\Http\Controllers\EmpleadosController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-    
 });
-Route::post('/empleado', [EmpleadosController::class, 'store']);
+
+Route::post('/empleados', [EmpleadosController::class, 'store']);
