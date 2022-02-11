@@ -18,8 +18,7 @@ class CreateEmpleadosTable extends Migration
             $table->string("nombre",20);
             $table->string("apellido_paterno",20);
             $table->string("apellido_materno",20);
-            $table->string("documento_identidad",20);
-            $table->string("documento_identidad",20);
+            $table->string("numero_documento_identidad",20);
             $table->string("pais",20);
             $table->softDeletes();
             $table->timestamps();

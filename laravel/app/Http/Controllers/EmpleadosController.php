@@ -3,40 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 
 class EmpleadosController extends Controller
 {
     function obtenerLista()
 	{
-		$productos =  Producto::all();
+		$empleado =  Empleado::all();
 
 
 		$response = new \stdClass();
 		$response->success=true;
-		$response->data=$productos;
+		$response->data=$empleado;
 
 		return response()->json($response,200);
 	}
 
     function obtenerItem($id)
 	{
-		$producto =  Producto::find($id);
+		$empleado =  Empleado::find($id);
 
 
 		$response = new \stdClass();
 		$response->success=true;
-		$response->data=$producto;
+		$response->data=$empleado;
 
 		return response()->json($response,200);
 	}
 
 	function update(Request $request)
 	{
-		$producto =  Producto::find($request->id);
+		$empleado =  Empleado::find($request->id);
 
-		if($producto)
+		if($empleado)
 		{
 			$producto->codigo=$request->codigo;
 			$producto->nombre=$request->nombre;
@@ -54,7 +54,7 @@ class EmpleadosController extends Controller
 
 	function patch(Request $request)
 	{
-		$producto =  Producto::find($request->id);
+		$producto =  Empleado::find($request->id);
 
 		if($producto)
 		{
@@ -78,16 +78,17 @@ class EmpleadosController extends Controller
 
 	function store(Request $request)
 	{
-		$producto = new Producto();
-		$producto->codigo = $request->codigo;
-		$producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-		$producto->status = $request->status;
-		$producto->save();
+		$empleado = new Empleado();
+		$empleado->nombre = $request->nombre;
+        $empleado->apellido_paterno = $request->apellido_paterno;
+        $empleado->apellido_materno = $request->apellido_materno;
+        $empleado->numero_documento_identidad = $request->numero_documento_identidad;
+        $empleado->pais = $request->pais;
+		$empleado->save();
 
 		$response = new \stdClass();
 		$response->success=true;
-		$response->data=$producto;
+		$response->data=$empleado;
 
 		return response()->json($response,200);
 	}
@@ -99,7 +100,7 @@ class EmpleadosController extends Controller
 		$response_code=200;
 
 
-		$producto = Producto::find($id);
+		$producto = Empleado::find($id);
 
 		if($producto)
 		{
@@ -109,7 +110,7 @@ class EmpleadosController extends Controller
 		}
 		else
 		{
-			$response->error=["El producto ya ha sido eliminado"];
+			$response->error=["El empleado ya ha sido eliminado"];
 			$response->success=false;
 			$response_code=500;
 		}
