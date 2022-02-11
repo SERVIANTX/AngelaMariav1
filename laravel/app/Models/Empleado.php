@@ -10,7 +10,7 @@ class Empleado extends Model
 {
 
     use HasUUID;
-    protected $table = 'Empleado';
+    protected $table = 'empleado';
 
     protected $primaryKey = 'id';
     public $incrementing = false;
