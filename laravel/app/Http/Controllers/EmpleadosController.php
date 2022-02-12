@@ -31,7 +31,8 @@ class EmpleadosController extends Controller
 
 		return response()->json($response,200);
 	}
-/*
+
+
 	function update(Request $request)
 	{
 		$empleado =  Empleado::find($request->id);
@@ -51,7 +52,7 @@ class EmpleadosController extends Controller
 		$response->data=$empleado;
 
 		return response()->json($response,200);
-	}*/
+	}
 
 	/*function patch(Request $request)
 	{
@@ -93,7 +94,7 @@ class EmpleadosController extends Controller
 
 		return response()->json($response,200);
 	}
-/*
+
 	function delete($id)
 	{
 		$response = new \stdClass();
@@ -118,5 +119,5 @@ class EmpleadosController extends Controller
 
 		return response()->json($response,$response_code);
 
-	}*/
+	}
 }
