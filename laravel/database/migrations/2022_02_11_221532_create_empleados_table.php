@@ -13,7 +13,7 @@ class CreateEmpleadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleado', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
             $table->uuid("id")->primary();
             $table->string("nombre",20);
             $table->string("apellido_paterno",20);
